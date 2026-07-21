@@ -20,7 +20,7 @@ Nirvani is a wellness and mindfulness brand offering holistic healing through yo
 
 | Layer | Technology |
 |-------|-----------|
-| **Framework** | Next.js 16 (App Router, Static Export) |
+| **Framework** | Next.js 16 (App Router) |
 | **Language** | TypeScript (strict mode) |
 | **UI** | React 19 |
 | **Styling** | Tailwind CSS 4 |
@@ -66,7 +66,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start development server with hot reload |
-| `npm run build` | Build for production (static export) |
+| `npm run build` | Build for production |
 | `npm start` | Serve the production build |
 | `npm run lint` | Run ESLint checks |
 
@@ -112,17 +112,14 @@ src/
 
 ## Deployment
 
-The project is configured for **static export** — no server required. Build and deploy to any static hosting provider:
-
 ```bash
 npm run build
+npm start
 ```
-
-The output is generated in the `out/` directory, ready to be deployed to GitHub Pages, Vercel, Netlify, or any CDN.
 
 ### Dokploy
 
-A `Dockerfile` is included: it builds the static export and serves it with nginx on **port 80** internally. In Dokploy, create an Application, point it at this repo, and it will pick up the Dockerfile automatically — no extra build/start commands or exposed port config needed beyond mapping your domain to internal port 80.
+Deployed via Dokploy's **Railpack** builder (same setup as the tivitime admin panel): it auto-detects the Next.js app, runs `npm run build`, then serves it with `npm start` (`next start`) on **port 3000** internally. No Dockerfile needed — just point the Application at this repo with Build Type set to Railpack, and set Container Port to `3000`.
 
 ## License
 
