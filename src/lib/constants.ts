@@ -5,7 +5,7 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ] as const;
 
-export const BASE_PATH = "/nirvani";
+export const BASE_PATH = "";
 
 export const SOCIAL_LINKS = [
   { label: "Instagram", icon: `${BASE_PATH}/images/instagram.png`, href: "https://instagram.com/nirvaniyogaandsound" },

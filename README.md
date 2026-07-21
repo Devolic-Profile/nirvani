@@ -59,7 +59,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000/nirvani](http://localhost:3000/nirvani) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### Scripts
 
@@ -120,7 +120,9 @@ npm run build
 
 The output is generated in the `out/` directory, ready to be deployed to GitHub Pages, Vercel, Netlify, or any CDN.
 
-> **Note:** The site is configured with a base path of `/nirvani`. Update `next.config.ts` if deploying to a different path.
+### Dokploy
+
+A `Dockerfile` is included: it builds the static export and serves it with nginx on **port 80** internally. In Dokploy, create an Application, point it at this repo, and it will pick up the Dockerfile automatically — no extra build/start commands or exposed port config needed beyond mapping your domain to internal port 80.
 
 ## License
 
