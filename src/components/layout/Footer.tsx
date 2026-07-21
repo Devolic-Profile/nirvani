@@ -12,7 +12,7 @@ export default function Footer() {
             src="/images/footer-logo.png"
             alt="Nirvani"
             fill
-            unoptimized
+            sizes="150px"
             className="object-contain"
           />
         </div>
@@ -48,7 +48,6 @@ export default function Footer() {
                   alt={social.label}
                   width={20}
                   height={20}
-                  unoptimized
                   className="object-contain w-5 h-5"
                 />
               </a>
@@ -100,7 +99,7 @@ export default function Footer() {
               src="/images/footer-logo.png"
               alt="Nirvani"
               fill
-              unoptimized
+              sizes="205px"
               className="object-contain"
             />
           </div>
@@ -125,7 +124,6 @@ export default function Footer() {
                     alt={social.label}
                     width={24}
                     height={24}
-                    unoptimized
                     className="object-contain w-6 h-6"
                   />
                 </a>

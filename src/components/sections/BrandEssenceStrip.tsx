@@ -13,7 +13,7 @@ export default function BrandEssenceStrip() {
               {item.text}
             </p>
             <div className="w-[35px] h-[33px] md:w-[57px] md:h-[53px] relative shrink-0">
-              <Image src={item.icon} alt="" fill className="object-contain" />
+              <Image src={item.icon} alt="" fill sizes="57px" className="object-contain" />
             </div>
           </div>
         ))}

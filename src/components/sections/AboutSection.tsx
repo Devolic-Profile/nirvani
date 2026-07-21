@@ -53,6 +53,7 @@ export default function AboutSection() {
                 src="/images/ellipse-stroke.png"
                 alt=""
                 fill
+                sizes="(max-width: 768px) 200px, 353px"
                 className="object-contain"
               />
             </div>
@@ -67,6 +68,7 @@ export default function AboutSection() {
                   src="/images/about-image.png"
                   alt="Healing scene"
                   fill
+                  sizes="(max-width: 768px) 100vw, 55vw"
                   className="object-cover"
                 />
               </div>

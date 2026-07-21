@@ -38,6 +38,7 @@ export default function StickyNav() {
             src="/images/layer.png"
             alt="Nirvani"
             fill
+            sizes="50px"
             className="object-contain"
           />
         </div>
@@ -62,6 +63,7 @@ export default function StickyNav() {
             src="/images/layer.png"
             alt="Nirvani"
             fill
+            sizes="40px"
             className="object-contain"
           />
         </div>

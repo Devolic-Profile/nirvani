@@ -84,6 +84,7 @@ function MethodStep({
           src={step.icon}
           alt={step.title}
           fill
+          sizes="96px"
           className="object-contain"
         />
       </div>

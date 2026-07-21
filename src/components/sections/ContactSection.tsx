@@ -10,11 +10,12 @@ export default function ContactSection() {
       className="relative w-full bg-secondary "
     >
       {/* Decorative background */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src="/images/contactus-background.png"
         alt=""
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-0.1"
+        fill
+        sizes="100vw"
+        className="object-cover pointer-events-none opacity-10"
       />
 
       <div className="w-full px-6 md:px-[91px] py-10 md:py-[60px] relative z-10">
@@ -30,6 +31,7 @@ export default function ContactSection() {
           src="/images/contact-image2.png"
           alt="Meditation"
           fill
+          sizes="494px"
           className="object-cover"
         />
       </div>

@@ -64,6 +64,7 @@ function ServiceCard({ title, desc, img }: { title: string; desc: string; img: s
         src={img}
         alt={title}
         fill
+        sizes="(max-width: 768px) 100vw, 33vw"
         className="object-cover transition-transform duration-500 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-dark/30 transition-colors duration-500 group-hover:bg-dark/50" />
