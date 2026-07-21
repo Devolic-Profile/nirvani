@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
 import useScrollVisibility from "@/hooks/useScrollVisibility";
+import { scrollToHash } from "@/lib/scroll";
 
 const HERO_HEIGHT = 820;
 
@@ -26,6 +27,7 @@ export default function StickyNav() {
             <a
               key={link.label}
               href={link.href}
+              onClick={(e) => scrollToHash(e, link.href)}
               className="font-gabarito font-semibold text-label text-dark tracking-[0.9px] uppercase hover:opacity-80"
             >
               {link.label}
@@ -48,6 +50,7 @@ export default function StickyNav() {
             <a
               key={link.label}
               href={link.href}
+              onClick={(e) => scrollToHash(e, link.href)}
               className="font-gabarito font-semibold text-label text-dark tracking-[0.9px] uppercase hover:opacity-80"
             >
               {link.label}
@@ -85,7 +88,10 @@ export default function StickyNav() {
             <a
               key={link.label}
               href={link.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => {
+                scrollToHash(e, link.href);
+                setMenuOpen(false);
+              }}
               className="font-gabarito font-semibold text-label text-dark uppercase"
             >
               {link.label}

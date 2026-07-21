@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
+import { scrollToHash } from "@/lib/scroll";
 
 type NavbarProps = {
   variant?: "hero" | "sticky";
@@ -77,7 +78,10 @@ export default function Navbar({ variant = "hero" }: NavbarProps) {
             <a
               key={link.label}
               href={link.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => {
+                scrollToHash(e, link.href);
+                setMenuOpen(false);
+              }}
               className="font-gabarito font-semibold text-label text-dark uppercase tracking-[0.9px] hover:text-primary transition-colors"
             >
               {link.label}
@@ -101,6 +105,7 @@ function NavLink({
   return (
     <a
       href={href}
+      onClick={(e) => scrollToHash(e, href)}
       className={`font-gabarito font-semibold text-label uppercase hover:opacity-80 transition-opacity ${className}`}
     >
       {children}

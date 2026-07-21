@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Button from "@/components/ui/Button";
+import { scrollToHash } from "@/lib/scroll";
 
 export default function HeroSection() {
   const [showSubtitle, setShowSubtitle] = useState(false);
   const [showHeading, setShowHeading] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
     const t1 = setTimeout(() => setShowSubtitle(true), 300);
     const t2 = setTimeout(() => setShowHeading(true), 1000);
@@ -16,9 +19,26 @@ export default function HeroSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play();
+        else video.pause();
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative w-full h-[60vh] md:h-[calc(100vh-100px)] overflow-hidden">
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
@@ -61,6 +81,7 @@ export default function HeroSection() {
           <Button
             as="link"
             href="#services"
+            onClick={(e) => scrollToHash(e, "#services")}
             className="bg-secondary text-dark hover:bg-[#d4c8b5] inline-block px-[36px] py-[16px] rounded-[56px] font-gabarito font-semibold text-label uppercase tracking-[0.9px] transition-colors"
           >
             Explore Sessions
