@@ -42,7 +42,7 @@ Nirvani is a wellness and mindfulness brand offering holistic healing through yo
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 26 (see `.node-version`)
 - npm or yarn
 
 ### Installation
@@ -68,6 +68,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 | `npm run dev` | Start development server with hot reload |
 | `npm run build` | Build the static site into `out/` |
 | `npm run lint` | Run ESLint checks |
+| `npm run typecheck` | Type-check with TypeScript |
 
 ## Project Structure
 
@@ -123,6 +124,13 @@ Hosted on Cloudflare Pages (project `raksha-website`, custom domain `nirvani.us`
 - Cache and security headers: `public/_headers`
 
 Images are WebP. Add new ones as `.webp` (for example `cwebp -q 82 in.png -o in.webp`) and use them with `next/image`; images are served as-is, not resized.
+
+## Maintenance
+
+- **Dependabot** opens update PRs every Monday (npm and GitHub Actions). Patch and minor updates merge themselves once checks pass; major updates wait for review.
+- **Checks on every PR** (`.github/workflows`): `test` (npm audit, typecheck, lint, build, OSV scan of the lockfile) and `semgrep`. Both must pass to merge into `main`.
+- **Daily OSV scan** of `main` catches advisories published after the last merge.
+- Changes go through a PR; `main` cannot be pushed to directly or deleted.
 
 ## License
 
