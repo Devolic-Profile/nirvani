@@ -1,0 +1,36 @@
+name: ci
+# Same gate as nobuffr-ci node-ci@v1, inlined because this public repo cannot call the private nobuffr-ci.
+# Required check: "test". Cloudflare Pages builds and deploys separately (preview per branch, main = live).
+on:
+  pull_request:
+  push: { branches: [main] }
+permissions: {}
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    permissions: { contents: read }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with: { node-version-file: .node-version, cache: npm }
+      - run: npm ci
+      - run: npm audit --audit-level=high
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build
+      # Every severity, GitHub + npm advisories. Exceptions: osv-scanner.toml [[IgnoredVulns]] with ignoreUntil.
+      - name: OSV scan
+        run: |
+          image=ghcr.io/google/osv-scanner:v2.7.0@sha256:4f3b7e2c64b9d38a5febc5a7e4a3dfef1d1362f726dea7a2ef4762b46469fcd0
+          set +e
+          docker run --rm -v "$PWD":/src:ro "$image" scan source --lockfile /src/package-lock.json > "$RUNNER_TEMP/osv.txt" 2>&1
+          rc=$?
+          set -e
+          tee -a "$GITHUB_STEP_SUMMARY" < "$RUNNER_TEMP/osv.txt"
+          case "$rc" in
+            0) ;;
+            1) echo "::error::OSV: vulnerable packages (see table)"; exit 1 ;;
+            *) echo "::error::osv-scanner failed (exit $rc)"; exit 1 ;;
+          esac
