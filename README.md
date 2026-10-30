@@ -66,8 +66,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start development server with hot reload |
-| `npm run build` | Build for production |
-| `npm start` | Serve the production build |
+| `npm run build` | Build the static site into `out/` |
 | `npm run lint` | Run ESLint checks |
 
 ## Project Structure
@@ -112,14 +111,18 @@ src/
 
 ## Deployment
 
-```bash
-npm run build
-npm start
-```
+The site is a static export (`output: "export"` in `next.config.ts`): `npm run build` writes plain HTML, CSS, JS and images to `out/`. There is no Node server.
 
-### Dokploy
+### Cloudflare Pages
 
-Deployed via Dokploy's **Railpack** builder (same setup as the tivitime admin panel): it auto-detects the Next.js app, runs `npm run build`, then serves it with `npm start` (`next start`) on **port 3000** internally. No Dockerfile needed — just point the Application at this repo with Build Type set to Railpack, and set Container Port to `3000`.
+Hosted on Cloudflare Pages (project `raksha-website`, custom domain `nirvani.us`). Every push to `main` builds and deploys automatically; pushes to other branches get a preview URL.
+
+- Build command: `npm run build`
+- Output directory: `out`
+- Node version: `.node-version`
+- Cache and security headers: `public/_headers`
+
+Images are WebP. Add new ones as `.webp` (for example `cwebp -q 82 in.png -o in.webp`) and use them with `next/image`; images are served as-is, not resized.
 
 ## License
 

@@ -50,7 +50,7 @@ export default function AboutSection() {
             {/* Decorative circle - behind image, outside overflow-hidden */}
             <div className="absolute right-0 bottom-[50px] translate-x-1/2 md:translate-x-3/4 w-[200px] h-[200px] md:w-[353px] md:h-[353px] z-0">
               <Image
-                src="/images/ellipse-stroke.png"
+                src="/images/ellipse-stroke.webp"
                 alt=""
                 fill
                 sizes="(max-width: 768px) 200px, 353px"
@@ -65,7 +65,7 @@ export default function AboutSection() {
                 }`}
               >
                 <Image
-                  src="/images/about-image.png"
+                  src="/images/about-image.webp"
                   alt="Healing scene"
                   fill
                   sizes="(max-width: 768px) 100vw, 55vw"

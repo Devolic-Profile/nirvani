@@ -1,15 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async headers() {
-    return [
-      {
-        source: "/images/:path*",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-    ];
-  },
+  // Static export for Cloudflare Pages; cache headers live in public/_headers.
+  output: "export",
+  images: { unoptimized: true },
 }
 
 module.exports = nextConfig
