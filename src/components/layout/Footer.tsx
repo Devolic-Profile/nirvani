@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Logo */}
         <div className="relative w-[150px] h-[190px]">
           <Image
-            src="/images/footer-logo.png"
+            src="/images/footer-logo.webp"
             alt="Nirvani"
             fill
             sizes="150px"
@@ -96,7 +96,7 @@ export default function Footer() {
         <div className="flex justify-center">
           <div className="relative w-[205px] h-[258px]">
             <Image
-              src="/images/footer-logo.png"
+              src="/images/footer-logo.webp"
               alt="Nirvani"
               fill
               sizes="205px"

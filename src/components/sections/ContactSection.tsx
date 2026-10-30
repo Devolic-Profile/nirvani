@@ -11,7 +11,7 @@ export default function ContactSection() {
     >
       {/* Decorative background */}
       <Image
-        src="/images/contactus-background.png"
+        src="/images/contactus-background.webp"
         alt=""
         fill
         sizes="100vw"
@@ -28,7 +28,7 @@ export default function ContactSection() {
       {/* Bottom left image - half in contact, half in footer */}
       <div className="hidden md:block absolute left-0 bottom-0 translate-y-1/4 w-[494px] h-[494px] z-20">
         <Image
-          src="/images/contact-image2.png"
+          src="/images/contact-image2.webp"
           alt="Meditation"
           fill
           sizes="494px"

@@ -43,7 +43,7 @@ export default function HeroSection() {
         muted
         loop
         playsInline
-        poster="/images/header-poster.jpg"
+        poster="/images/header-poster.webp"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/images/header-video.mp4" type="video/mp4" />
